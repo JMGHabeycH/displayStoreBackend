@@ -3,8 +3,8 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const { createProduct } = require('../controllers/products/index'); // Ajusta la ruta
-const Product = require('../models/product'); // Ajusta también esta ruta
+const { createProduct } = require('../controllers/products/index'); 
+const Product = require('../models/product'); 
 
 jest.mock('../models/product'); // Mock de Mongoose model
 
@@ -30,7 +30,7 @@ describe('POST /products', () => {
     const response = await request(app)
       .post('/products')
       .field('name', 'Test Product')
-      .attach('image', path.join(__dirname, 'testImage.png')); // Debes tener esta imagen
+      .attach('image', path.join(__dirname, 'testImage.png')); 
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toHaveProperty('message');
